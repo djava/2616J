@@ -169,46 +169,40 @@ pros::delay(200);
 //------------------------------------------------------------------------------
 static lv_res_t event_handler(lv_obj_t *obj)
 {
-	autonid++;
-	if (autonid > 5)
+	autonid = ++autonid > 5 ? 1 : autonid;
+	std::cout << "A=" << autonid << std::endl;
+	switch (autonid)
 	{
-		autonid = 1;
-	}
-	printf("A=%d\n", autonid);
-	if (autonid == 1)
-	{
-		lv_obj_set_hidden(img_stack, 1);
-		lv_obj_set_hidden(img_push, 1);
-		lv_obj_set_hidden(img_blue, 1);
-		lv_obj_set_hidden(img_bigstack, 0);
-	}
-	if (autonid == 2)
-	{
-		lv_obj_set_hidden(img_stack, 1);
-		lv_obj_set_hidden(img_push, 1);
-		lv_obj_set_hidden(img_blue, 0);
-		lv_obj_set_hidden(img_bigstack, 0);
-	}
-	if (autonid == 3)
-	{
-		lv_obj_set_hidden(img_stack, 0);
-		lv_obj_set_hidden(img_push, 1);
-		lv_obj_set_hidden(img_blue, 1);
-		lv_obj_set_hidden(img_bigstack, 1);
-	}
-	if (autonid == 4)
-	{
-		lv_obj_set_hidden(img_stack, 0);
-		lv_obj_set_hidden(img_push, 1);
-		lv_obj_set_hidden(img_blue, 0);
-		lv_obj_set_hidden(img_bigstack, 1);
-	}
-	if (autonid == 5)
-	{
-		lv_obj_set_hidden(img_stack, 1);
-		lv_obj_set_hidden(img_push, 0);
-		lv_obj_set_hidden(img_blue, 1);
-		lv_obj_set_hidden(img_bigstack, 1);
+		case 1:
+			lv_obj_set_hidden(img_stack, 1);
+			lv_obj_set_hidden(img_push, 1);
+			lv_obj_set_hidden(img_blue, 1);
+			lv_obj_set_hidden(img_bigstack, 0);
+			break;
+		case 2:
+			lv_obj_set_hidden(img_stack, 1);
+			lv_obj_set_hidden(img_push, 1);
+			lv_obj_set_hidden(img_blue, 0);
+			lv_obj_set_hidden(img_bigstack, 0);
+			break;
+		case 3:
+			lv_obj_set_hidden(img_stack, 0);
+			lv_obj_set_hidden(img_push, 1);
+			lv_obj_set_hidden(img_blue, 1);
+			lv_obj_set_hidden(img_bigstack, 1);
+			break;
+		case 4:
+			lv_obj_set_hidden(img_stack, 0);
+			lv_obj_set_hidden(img_push, 1);
+			lv_obj_set_hidden(img_blue, 0);
+			lv_obj_set_hidden(img_bigstack, 1);
+			break;
+		case 5:
+			lv_obj_set_hidden(img_stack, 1);
+			lv_obj_set_hidden(img_push, 0);
+			lv_obj_set_hidden(img_blue, 1);
+			lv_obj_set_hidden(img_bigstack, 1);
+			break;
 	}
 	pros::delay(50);
 	return LV_RES_OK;
